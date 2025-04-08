@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +11,12 @@
   <script>
     const token = "d09ef8e894e834f58606fc0c4e27b2c9";
     const userId = "0926661159763859";
-    const url = `https://oapi.dingtalk.com/topapi/v2/user/get?access_token=${token}`;
-    const body = { userid: userId };
+    const url = `https://oapi.dingtalk.com/topapi/v2/user/get?access_token=${token}&userid=${userId}`;
 
     async function callAPI() {
       try {
         const response = await fetch(url, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(body)
+          method: "GET",
         });
 
         const result = await response.json();
@@ -34,7 +28,7 @@
       }
     }
 
-    setInterval(callAPI, 500);
+    setInterval(callAPI, 5000);  // 调用频率降低到5秒一次
   </script>
 </body>
 </html>
